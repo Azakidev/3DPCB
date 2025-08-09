@@ -54,8 +54,8 @@ Running after 3DPCB.py can both help spot misaligned parts showing all planes an
 ### assembly.py
 This script cuts a good chunk of busywork when fixing components that may not follow the requirements of 3DPCB.py by placing the part in an assembly, following the name convention and folder structure while staying within Inventor.
 #### Usage
-- It's recommended to use after `3DPCB.py [...] -a` and `hidework.py -p -o` to find misaligned components quickly.
+- It's recommended to use after `.\3DPCB.py [...] -a` and `.\hidework.py -p -o` to find misaligned components quickly.
 - Open a part that's not correctly aligned.
-- Run `assemble.py; hidework -p`, it's recommended to use both in tandem.
+- Run `.\assemble.py; .\hidework.py -p`, it's recommended to use both in tandem.
 - Fix the alignment and save the new assembly.
-- On the next run of `3DPCB.py [...] -a`, it will use the fixed component automatically.
+- On the next run of `.\3DPCB.py [...] -a`, it will use the fixed component automatically.
