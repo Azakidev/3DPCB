@@ -20,16 +20,19 @@ This script requires a CSV with the bill of materials and another with the posit
 The bill of materials CSV requires at least the following columns with these EXACT names:
 - "P/Ns", for the part numbers
 - "REFS", for the positions in the eCAD software
+
 The positions CSV requires at least the following columns:
 - "REF", matching those in the BOM.
 - "X"
 - "Y"
 - "A"
 - "SIDE"
+
 The first component of the assembly should be a part with a representation of the bare PCB, placed in the following ways:
 - The XY plane of the assembly should be constrained with the TOP side of the PCB.
 - The XY plane of the PCB should correspond with the BOTTOM side of the PCB.
 - The origin of the assembly should be at the same point as in the eCAD software over the PCB.
+
 Finally, the electronic components should follow these rules:
 - The origin of the component should match the centroid in the eCAD software.
 - The XY plane of the component should match with the PCB.
