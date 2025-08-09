@@ -1,4 +1,4 @@
-# 3DPCB
+# <center>3DPCB</center>
 3DPCB is a set of tools to automate the placement of PCB components for Autodesk Inventor.
 It was made to bridge a gap between the electronics and 3D departments at my previous workplace.
 
@@ -9,7 +9,7 @@ Now a generic version of it is being released as Open Source Software for educat
 - pipenv (optional)
 You can install all dependencies by using pipenv and running `pipenv install --deploy` on a terminal window at the same folder as the Pipfile.
 ## Features and usage
-This project consists in 3 scripts that are meant to work together.
+This project consists in 3 scripts that are meant to work together, although their uses can be more general when used independently.
 ### 3DPCB.py
 This script requires a CSV with the bill of materials and another with the positioning gerber generated an eCAD software. It will then:
 - Search for all electronic components used.
@@ -39,8 +39,23 @@ Finally, the electronic components should follow these rules:
 - The positive Z axis is up.
 - The orientation of the component should be the same as in the eCAD software.
 #### Usage
-1. Open the assembly in an inventor instance.
-2. Run the following command, replacing the placeholders.
 ```.\3DPCB.py [BOM CSV] [POSITION CSV] <-a> <-h>```
     - The argument `-a` will make the script insert the components, excluding it will check the presence of all components without making changes.
     - The argument `-h` will print usage information.
+### hidework.py
+This script automates hiding or showing work geometry in all components of an assembly.
+Running after 3DPCB.py can both help spot misaligned parts showing all planes and clear the culutter by running without arguments.
+#### Usage
+```.\hidework.py <-p> <-c> <-a> <-o>```
+- `-p` shows all work planes, otherwise it will hide them.
+- `-c` shows all work points, otherwise it will hide them.
+- `-a` shows all work axis, otherwise it will hide them.
+- `-o` will make the previous 3 arguments only apply to top level components
+### assembly.py
+This script cuts a good chunk of busywork when fixing components that may not follow the requirements of 3DPCB.py by placing the part in an assembly, following the name convention and folder structure while staying within Inventor.
+#### Usage
+- It's recommended to use after `3DPCB.py [...] -a` and `hidework.py -p -o` to find misaligned components quickly.
+- Open a part that's not correctly aligned.
+- Run `assemble.py; hidework -p`, it's recommended to use both in tandem.
+- Fix the alignment and save the new assembly.
+- On the next run of `3DPCB.py [...] -a`, it will use the fixed component automatically.
