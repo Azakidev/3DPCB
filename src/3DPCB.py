@@ -17,7 +17,7 @@ if '-v' in args:
 if '-h' in args:
     print('3DPCB usage guide:')
     print()
-    print('    .\\3DPCB.py [BOM CSV] [Positions CSV] <-a>')
+    print('    .\\3DPCB.py [BOM CSV] [POSITIONS CSV] <-a>')
     print()
     print('Not including -a will produce a dry run' +
           ' where no components get placed.')
@@ -99,7 +99,7 @@ def searchPart(pn):
 def addParts(row, postable):
     try:
         row['P/Ns']
-        row['PARTS']
+        row['REFS']
     except KeyError as e:
         print('\033[91m[ERROR]\033[0m ' +
               'Column ' + str(e) + ' is missing or named incorrectly.')
